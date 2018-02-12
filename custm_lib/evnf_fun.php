@@ -3,7 +3,7 @@ function setConnectionDB(){
 $db = new MysqliDb (Array (
       'host' => 'localhost',
       'username' => 'root',
-      'password' => 'evanfa85',
+      'password' => '',
       'db'=> 'db_opsdeliver',
       'port' => 3307,
       'prefix' => '',

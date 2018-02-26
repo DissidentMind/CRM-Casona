@@ -18,6 +18,8 @@
 			<!-- Compiled and minified JavaScript -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+
+      <link rel="stylesheet" type="text/css" href="css_lib/crm_styler.css">
     </head>
   <body>
 <!-- Connect - DB -->
@@ -58,12 +60,15 @@ if ($db->getLastErrno() === 0)
 <!-- Nav -->
   <nav>
     <div class="nav-wrapper brown darken-3">
-      <a href="#!" class="brand-logo">CRM - La Casona del Banco</a>
+      <a href="#!" class="brand-logo">CRM - La Casona del Banco - Deployer</a>
       <ul class="right hide-on-med-and-down">
         <li><a id="btnReload" class="waves-effect waves-light brown btn lighten-2">Execute<i class="material-icons right">cached</i></a></li>
       </ul>
     </div>
   </nav>
+<!-- Container -->
+<!-- Container -->
+<!--<div class="content">-->
 
 <script type="text/javascript">
   $(btnReload).click(function(e){
@@ -74,25 +79,28 @@ if ($db->getLastErrno() === 0)
 </br>
 <div class="row">
   <div class="col l6 s12">
-    <p>
+    <p>    </p>
 <?php
 //require_once ('php_lib/MysqliDb.php');
 /*require_once('custm_lib/evnf_connect.php');*/
 require_once('custm_lib/evnf_fun.php');
 
-$arryCols = Array("id","getid","deed");
-$tableName = 'deeds_db';
-//setConnectionDB();
-getsTableRecords($arryCols, $tableName);
+$arryCols = Array("id","name_usr","email_usr","level_usr");
+$tableName = 'users_crm';
+$crmFunCall = new CrmCasonaFuns();
+$crmFunCall ->getsTableRecords($arryCols, $tableName);
     /*$db->where ("id", 3);
     $user = $db->getOne ("category");
     echo $user['name'];*/
     /*$stats = $db->getOne ("users", "sum(id), count(*) as cnt");
     echo "total ".$stats['cnt']. "users found";*/
  ?>
-    </p>
   </div>
 </div>
+
+<!-- Container -->
+<!--</div>-->
+<!-- Container -->
 
 <footer class="page-footer brown darken-3">
           <div class="container">

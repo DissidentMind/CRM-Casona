@@ -1,4 +1,3 @@
-
   <!DOCTYPE html>
   <html>
     <head>
@@ -79,7 +78,7 @@ if ($db->getLastErrno() === 0)
 </br>
 <div class="row">
   <div class="col l6 s12">
-    <p>    </p>
+    <p>  Data Table  </p>
 <?php
 //require_once ('php_lib/MysqliDb.php');
 /*require_once('custm_lib/evnf_connect.php');*/
@@ -96,6 +95,18 @@ $crmFunCall ->getsTableRecords($arryCols, $tableName);
     echo "total ".$stats['cnt']. "users found";*/
  ?>
   </div>
+</div>
+
+<div class="row">
+  <ul class="pagination">
+     <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+     <li class="active"><a href="#!">1</a></li>
+     <li class="waves-effect"><a href="#!">2</a></li>
+     <li class="waves-effect"><a href="#!">3</a></li>
+     <li class="waves-effect"><a href="#!">4</a></li>
+     <li class="waves-effect"><a href="#!">5</a></li>
+     <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+   </ul>
 </div>
 
 <!-- Container -->

@@ -1,4 +1,4 @@
-<!doctype html>
+
 <html>
     <head>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,16 +13,27 @@
       <link rel="stylesheet" type="text/css" href="css_lib/crm_styler.css">
     </head>
 <body>
+  <div class="row">
+    <div class="col l6 s12">
+    <?php
+    if(isset($_GET['id']) && $_GET['id'] !== ''){
+      $product_id = $_GET['id'];
+      echo $product_id;
 
-  <ul class="pagination">
-     <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-     <li class="active"><a href="#!">1</a></li>
-     <li class="waves-effect"><a href="#!">2</a></li>
-     <li class="waves-effect"><a href="#!">3</a></li>
-     <li class="waves-effect"><a href="#!">4</a></li>
-     <li class="waves-effect"><a href="#!">5</a></li>
-     <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-   </ul>
+      require_once('custm_lib/evnf_fun.php');
+
+      $arryCols = Array("id","name_usr","email_usr","level_usr");
+      $tableName = 'users_crm';
+      $crmFunCall = new CrmCasonaFuns();
+      $crmFunCall ->getsTableRecords($arryCols, $tableName);
+    } else {
+      echo "failed";
+    }
+  /*<a href="pages.php?id=<?php echo $product_id; ?>"> */
+     ?>
+   </div>
+ </div>
+
 
 </body>
 </html>

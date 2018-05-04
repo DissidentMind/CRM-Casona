@@ -104,7 +104,7 @@ $crmFunCall ->getsTableRecords($arryCols, $tableName);
      <li class="waves-effect"><a href="#!">2</a></li>
      <li class="waves-effect"><a href="#!">3</a></li>
      <li class="waves-effect"><a href="#!">4</a></li>
-     <li class="waves-effect"><a href="#!">5</a></li>
+     <li class="waves-effect"><a href="paginator.php?id=1">5</a></li>
      <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
    </ul>
 </div>

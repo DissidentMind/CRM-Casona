@@ -25,7 +25,10 @@
       $arryCols = Array("id","name_usr","email_usr","level_usr");
       $tableName = 'users_crm';
       $crmFunCall = new CrmCasonaFuns();
-      $crmFunCall ->getsTableRecords($arryCols, $tableName);
+      //$crmFunCall ->getsTableRecords($arryCols, $tableName);
+      $crmFunCall ->getsTotalRecords($arryCols, $tableName);
+    //  echo $crmFunCall;
+
     } else {
       echo "failed";
     }

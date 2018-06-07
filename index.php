@@ -17,42 +17,57 @@
 			<!-- Compiled and minified JavaScript -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-
       <link rel="stylesheet" type="text/css" href="css_lib/crm_styler.css">
+
+<script type="text/javascript">
+  /*  $(document).ready(function(){
+      $("#datatable").load("dev_tester/getDataFromQuery.php");
+    });*/
+    $(document).ready(function() {
+    $('#datatable').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": "dev_tester/getDataFromQuery.php",
+            "type": "POST"
+        },
+        "columns": [
+            { "data": "id" },
+            { "data": "name_usr" },
+            { "data": "email_usr" },
+            { "data": "password_usr" },
+            { "data": "level_usr" }
+        ]
+    } );
+} );
+</script>
+
     </head>
   <body>
 <!-- Connect - DB -->
 <!-- ****************************** -->
-<?php
-/*require_once ('php_lib/MysqliDb.php');
-require_once('custm_lib/evnf_connect.php');
-require_once('custm_lib/evnf_fun.php');
-
-$arryCols = Array("id","getid","deed");
-$tableName = "deeds_db";*/
-
-/*require_once ('php_lib/MysqliDb.php');
-$db = new MysqliDb (Array (
-    'host' => 'localhost',
-    'username' => 'root',
-    'password' => 'evanfa85',
-    'db'=> 'test_dummy',
-    'port' => 3307,
-    'prefix' => '',
-    'charset' => 'utf8'));
-$db->autoReconnect = false;*/
-/*$data = Array (
-    "name" => 'Test'
-    );
-$id = $db->insert ('category', $data);
-if($id)
-    echo 'user was created. Id=' . $id;
-if ($db->getLastErrno() === 0)
-    echo 'Succesfull';
-        else
-    echo 'Failed. Error: '. $db->getLastError();
-    */
- ?>
+<div id="table-div">
+  <table id="datatable" class="display" style="width:100%">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Password</th>
+                  <th>Level</th>
+              </tr>
+          </thead>
+          <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Level</th>
+            </tr>
+          </tfoot>
+      </table>
+</div>
 <!-- ****************************** -->
 <!-- Connect - DB -->
 

@@ -1,0 +1,1062 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <!--[if lt IE 8]>
+  <link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen, projection" />
+  <![endif]-->
+  <link rel="shortcut icon" type="image/ico" href="http://paneldemo.oneplace.mx/themes/zicepanel_flat/images/favicon.ico" />
+  <!-- Link css-->
+  <link rel="stylesheet" type="text/css" href="http://paneldemo.oneplace.mx/themes/zicepanel_flat/css/zice.style.css" />
+  <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="components/flot/excanvas.min.js"></script><![endif]-->
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/js/jquery.min.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/ui/jquery.ui.min.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/ui/timepicker.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/ui/jquery.ui.datepicker-es.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/checkboxes/iphone.check.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/datatables/dataTables.min.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/datatables/ColVis.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/datatables/dataTablesReload.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/scrolltop/scrolltopcontrol.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/fancybox/jquery.fancybox.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/jscrollpane/mousewheel.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/jscrollpane/mwheelIntent.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/jscrollpane/jscrollpane.min.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/spinner/ui.spinner.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/tipsy/jquery.tipsy.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/editor/jquery.cleditor.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/chosen/chosen.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/confirm/jquery.confirm.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/validationEngine/jquery.validationEngine.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/validationEngine/jquery.validationEngine-es.js"></script>
+
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/vticker/jquery.vticker-min.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/sourcerer/sourcerer.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/flot/flot.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/flot/flot.pie.min.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/flot/flot.resize.min.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/flot/graphtable.js"></script>
+
+  <!-- Uploadify Nuevo -->
+
+  <link rel="stylesheet" type="text/css" href="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/uploadify1/uploadify.css" />
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/uploadify1/jquery.uploadify.js"></script>
+  <!-- Uploadifive -->
+  <link rel="stylesheet" type="text/css" href="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/uploadifive/uploadifive.css" />
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/uploadifive/jquery.uploadifive.min.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/checkboxes/customInput.jquery.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/effect/jquery-jrumble.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/filestyle/jquery.filestyle.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/placeholder/jquery.placeholder.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/smartWizard/jquery.smartWizard.min.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/maskedinput/jquery.maskedinput.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/highlightText/highlightText.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/elastic/jquery.elastic.source.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/js/jquery.cookie.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/js/gmap3.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/js/zice.custom.js"></script>
+
+  <link rel="stylesheet" href="http://paneldemo.oneplace.mx/themes/zicepanel_flat/components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://paneldemo.oneplace.mx/themes/zicepanel_flat/css/notificaciones.css">
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/js/notificaciones.js"></script>
+  <script type="text/javascript" src="http://paneldemo.oneplace.mx/themes/zicepanel_flat/js/controllers.js"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {(i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-24571525-3', 'auto');
+    ga('send', 'pageview');
+
+    $(document).ready(function() {
+      $notificaciones.init();
+    });
+
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() { // Script del Navegador
+      $("ul.subnavega").hide();
+      $("a.desplegable").toggle(
+        function() {
+          $(this).parent().addClass("active");
+          $(this).parent().find("ul.subnavega").slideDown('fast');
+        },
+        function() {
+          $(this).parent().removeClass("active");
+          $(this).parent().find("ul.subnavega").slideUp('fast');
+        }
+      );
+
+      $(window).scroll(function() { //script hide and show footer
+        if ($("body").height() <= ($(window).height() + $(window).scrollTop())) {
+          $("#footer").fadeIn("slow").addClass("show");
+        } else{
+          $("#footer").fadeOut("slow").removeClass("show");
+        }
+      });
+    });
+  </script>
+<title>One Place V2.1 Desarrollo - Dashboard</title>
+</head>
+
+<body class="dashborad">
+  <div id="alertMessage" class="error"></div>
+  <!-- Header -->
+  <div id="header">
+    <div id="account_info">
+      <!-- logo -->
+      <a href="#" class="logo">
+                <img src="/images/logo_oneplace_pdf.png" alt="Logismic S de RL de CV" style="width: 190px;" />
+                </a>
+      <!-- submenú -->
+      <div id="submenu">
+        <a href="/index.php/panel/reservaciones/nueva" class="element reservaciones">
+                            <i class="fa fa-tag fa-2x"></i>
+                            <p>Reservaciones</p>
+                        </a>
+        <a href="/index.php/panel/reservaciones/nuevoCheckin" class="element check-in">
+
+                        <i class="fa fa-map-marker fa-2x"></i>
+
+                        <p>Check-In</p>
+
+                    </a>
+
+        <a href="/index.php/panel/reservaciones/checkout" class="element check-out">
+
+                        <i class="fa fa-check-square-o fa-2x"></i>
+
+                        <p>Check-Out</p>
+
+                    </a>
+
+        <a href="/index.php/panel/mapaDisponibilidad" class="element mapeo">
+
+                            <i class="fa fa-calendar-o fa-2x"></i>
+
+                            <p>Disponibilidad</p>
+
+                        </a>
+
+
+
+        <div id="notificaciones" href="" class="element">
+
+          <i class="fa fa-envelope-o fa-2x " title="example"></i>
+
+          <a href="">
+            <p></p>
+          </a>
+
+          <div class="menu_notificacion"></div>
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <!-- Settings -->
+
+      <div class="setting">
+
+        <div>
+
+          <img height="80px" src="/images/hoteles/logotipo_RyoigatY1zAlm3uZKVvc6wkLTWM2fshH.jpg" />
+
+        </div>
+
+        <div class="datos">
+
+          <div class="nombre"> S.A. DE C.V.</div>
+
+          <!--<div class="email">-->
+          <!--</div>-->
+
+          <div class="rol">Administrador</div>
+
+        </div>
+
+        <ul class="subnav ">
+
+          <li><a href="/index.php/panel/usuarios/updateprofile/id/32">Mi Perfil</a></li>
+
+          <li><a href="/index.php/panel/acceso/logout">Salir</a></li>
+
+          <br class="clear" />
+
+        </ul>
+
+      </div>
+
+      <div class="clear"></div>
+
+    </div>
+
+  </div>
+
+  <div id="left_menu">
+
+    <ul id="main_menu" class="main_menu">
+
+
+
+      <li class="limenu">
+
+        <a href="/index.php/panel/mapaDisponibilidad"><b><i class=" icon-menu fa fa-home fa-lg"></i>Inicio</b></a>
+
+      </li>
+
+      <li class="limenu">
+
+        <a href="/index.php/panel/reservaciones/encasa"><b><i class=" icon-menu fa fa-user-o fa-lg"></i>huespedes en casa</b></a>
+
+      </li>
+
+      <li class="limenu">
+
+        <a class="desplegable" href="#"><b><i class=" icon-menu fa fa-tag fa-lg"></i><i class='fa fa-angle-right chevron-icon-sidebar'></i>Reservaciones</b></a>
+
+        <ul class="subnavega">
+
+          <li><a href="/index.php/panel/reservaciones/adminOcupacionesAjax">ver todas</a></li>
+
+          <li><a href="/index.php/panel/reservaciones/nueva">Nueva Reservación</a></li>
+
+          <li><a href="/index.php/panel/reservacionesGrupos#/grupos/lista">Grupos</a></li>
+
+          <li><a href="/index.php/panel/reservaciones/horarios">Nueva Reservación Horas</a></li>
+
+          <li><a href="/index.php/panel/reservaciones/activas">activas</a></li>
+
+          <li><a href="/index.php/panel/reportes/reporteCancelaciones">canceladas</a></li>
+
+          <li><a href="/index.php/panel/ocupaciones">Cambio de Habitación</a></li>
+
+        </ul>
+
+      </li>
+
+      <li class="limenu">
+
+        <a href="/index.php/panel/turnos/corte"><b><i class=" icon-menu fa fa-book fa-lg"></i>Turno</b></a>
+
+      </li>
+
+      <li class="limenu">
+
+        <a href="/index.php/panel/reservaciones/nuevoCheckin"><b><i class=" icon-menu fa fa-map-marker fa-lg"></i>Check-In</b></a>
+
+      </li>
+
+      <li class="limenu">
+
+        <a href="/index.php/panel/estadocuenta"><b><i class="  icon-menu fa fa-file-text-o fa-lg"></i>Estado de Cuenta</b></a>
+
+      </li>
+
+      <li class="limenu">
+
+        <a href="/index.php/panel/reservaciones/checkout"><b><i class="  icon-menu fa fa-check-square-o fa-lg"></i>Check-Out</b></a>
+
+      </li>
+
+      <li class="limenu">
+
+        <a class="desplegable" href="#"><b><i class=" icon-menu fa fa-key fa-lg"></i><i class='fa fa-angle-right chevron-icon-sidebar'></i>ama de llaves</b></a>
+
+        <ul class="subnavega">
+
+          <li><a href="/index.php/panel/Housekeeping">Listado</a></li>
+
+          <li><a href="/index.php/panel/Housekeeping/planeacion">Planeación</a></li>
+
+          <li><a href="/index.php/panel/Housekeeping/pendientes">Pendientes de limpieza del día</a></li>
+
+        </ul>
+
+      </li>
+
+      <li class="limenu">
+
+        <a class="desplegable" href="#"><b><i class=" icon-menu fa fa-folder-open fa-lg"></i><i class='fa fa-angle-right chevron-icon-sidebar'></i>Catálogos</b></a>
+
+        <ul class="subnavega">
+
+          <li><a href="/index.php/panel/personas">Huéspedes</a></li>
+
+          <li><a href="/index.php/panel/clientes">Clientes</a></li>
+
+          <li><a href="/index.php/panel/prospectos">Prospectos</a></li>
+
+        </ul>
+
+      </li>
+
+      <li class="limenu">
+
+        <a href="/index.php/panel/productosServicios/admin"><b><i class=" icon-menu fa fa-wrench fa-lg"></i>Productos/Servicios</b></a>
+
+      </li>
+
+      <li class="limenu">
+
+        <a href="/index.php/panel/reportes/admin"><b><i class=" icon-menu fa fa-file-o fa-lg"></i>Reportes</b></a>
+
+      </li>
+
+      <li class="limenu">
+
+        <a href="/index.php/panel/egresos"><b><i class=" icon-menu fa fa-line-chart fa-lg"></i>Control de egresos</b></a>
+
+      </li>
+
+      <li class="limenu">
+
+        <a href="/index.php/panel/configuracion"><b><i class=" icon-menu fa fa-cogs fa-lg"></i>Configuración</b></a>
+
+      </li>
+
+      <li class="limenu">
+
+        <a class="desplegable" href="#"><b><i class=" icon-menu fa fa-file-code-o fa-lg"></i> <i class='fa fa-angle-right chevron-icon-sidebar'></i>Facturación</b></a>
+
+        <ul class="subnavega">
+
+          <li><a href="/index.php/panel/facturacionLibre/facturas">Facturas Libres</a></li>
+
+        </ul>
+
+      </li>
+
+      <li class="limenu">
+
+        <a href="/index.php/panel/usuarios/admin"><b><i class=" icon-menu fa fa-users fa-lg"></i>Usuarios</b></a>
+
+      </li>
+
+
+
+      <li class="limenu"><a href="/index.php/panel/dashboard/ayuda"><b><i class="  icon-menu fa fa-question-circle fa-lg"></i>Ayuda</b></a></li>
+
+      <div class="clear"></div>
+
+    </ul>
+
+    <div class="clear"></div>
+
+  </div>
+
+
+
+  <div class="clear"></div>
+
+  <!-- End Header -->
+
+
+
+  <div id="content">
+
+    <div class="widgets">
+
+
+
+      <div class="clear"></div>
+
+    </div>
+
+    <div class="inner">
+
+
+
+
+
+
+
+      <div class="content">
+
+        <link rel="stylesheet" type="text/css" href="http://paneldemo.oneplace.mx/themes/zicepanel_flat/css/pizarra.css" />
+
+        <script type="text/javascript">
+          function mueveReloj() {
+
+            momentoActual = new Date()
+
+            hora = momentoActual.getHours()
+
+            minuto = momentoActual.getMinutes()
+
+
+
+            if (hora < 12) {
+
+              tipo = '  A.M.';
+
+            } else {
+
+              tipo = '  P.M.'
+
+            }
+
+
+
+            if (hora > 12) {
+
+              hora = hora - 12;
+
+            }
+
+
+
+            if (hora.toString().length == 1) {
+
+              hora = '0' + hora;
+
+            }
+
+
+
+            if (minuto.toString().length == 1) {
+
+              minuto = '0' + minuto;
+
+            }
+
+
+
+            //(minuto).length==1 ? "0" + minuto : minuto ;
+
+
+
+            //$('.hora').html(hora);
+
+            //$('.minuto').html(minuto + tipo);
+
+            setTimeout("mueveReloj()", 60000)
+
+          }
+
+
+
+          $(document).ready(function() {
+
+            mueveReloj();
+
+          });
+        </script>
+
+
+
+
+
+
+
+
+
+
+        <div class="widgets">
+
+          <!-- <div class="twoOne"> -->
+
+          <div class="widget">
+
+            <div class="header"><span><span class="ico gray window"></span>Mapa de Ocupaci&oacute;n</span>
+            </div>
+
+            <div class="content">
+
+              <link rel="stylesheet" type="text/css" href="http://paneldemo.oneplace.mx/themes/zicepanel_flat/css/mapa.style.css" />
+
+
+
+              <script type="text/javascript">
+                // Carga el tooltip de las marcas
+
+                $(document).on('mouseover', '.tooltipReserva', function(event) {
+
+                  var tooltip = $(this)
+
+                  var claveUnidad = $(tooltip).attr('data-claveUnidad');
+
+                  var fecha = $(tooltip).attr('data-fecha');
+
+                  $.ajax({
+
+                    url: '/index.php/panel/mapaDisponibilidad/cargarDatosReservacion',
+
+                    data: {
+                      claveUnidad: claveUnidad,
+                      fecha: fecha
+                    },
+
+                    success: function(data) {
+
+                      $(tooltip).attr('title-reserva', 'Folio #' + data.folio_reservacion + '\nNombre: ' + data.nombre_completo);
+
+                    },
+
+                    error: function() {
+
+                      $(tooltip).attr('title-reserva', 'Error en Ejecucion');
+
+                    },
+
+                    cache: false,
+
+                    type: "POST",
+
+                    dataType: 'json'
+
+                  });
+
+
+
+                });
+
+
+
+                // Carga el tooltip de las marcas por horas
+
+                $(document).on('mouseover', '.tooltipReservaHoras', function(event) {
+
+                  var tooltip = $(this)
+
+                  var claveUnidad = $(tooltip).attr('data-claveUnidad');
+
+                  var fecha = $(tooltip).attr('data-fecha');
+
+                  var hora = $(tooltip).attr('data-hora');
+
+                  $.ajax({
+
+                    url: '/index.php/panel/mapaDisponibilidad/cargarDatosReservacionHoras',
+
+                    data: {
+                      claveUnidad: claveUnidad,
+                      fecha: fecha,
+                      hora: hora
+                    },
+
+                    success: function(data) {
+
+                      $(tooltip).attr('title-reserva', 'Folio #' + data.folio_reservacion + '\nNombre: ' + data.nombre_completo);
+
+                    },
+
+                    error: function() {
+
+                      $(tooltip).attr('title-reserva', 'Error en Ejecucion');
+
+                    },
+
+                    cache: false,
+
+                    type: "POST",
+
+                    dataType: 'json'
+
+                  });
+
+
+
+                });
+
+
+
+                //Funciones de apoyo
+
+                function reloadMapa(tablaDinamica, $fecha) {
+
+                  loading('Cargando', 1);
+
+                  $.ajax({
+
+                    url: '/index.php/panel/mapaDisponibilidad/admin',
+
+                    data: {
+                      fechaInicio: $fecha || null
+                    },
+
+                    success: function(data) {
+
+
+
+                      $('#mapa tr').remove();
+
+
+
+                      trHead = $('<tr></tr>');
+
+
+
+                      $('<td width="40%">&nbsp</td>').appendTo(trHead);
+
+                      $.each(data.columnas, function(k, v) {
+
+                        $('<td><span class="fecha">' + v + '</span></td>').appendTo(trHead);
+
+                      });
+
+                      trHead.appendTo('#mapa thead');
+
+
+
+                      $.each(data.datos, function(k, v) {
+
+
+
+                        tr = $('<tr class=" trCap cap_' + v.capacidad + '"></tr>');
+
+                        $('<td align="left" height="25px"><span class="clave_unidad">' + v.claveUnidad + '</span>-' + v.descripcion + '</td>').appendTo(tr);
+
+                        $.each(v.ocupaciones, function(a, b) {
+
+
+
+                          checkbox = '';
+
+                          if (v.tipo_cobro == 'NOCHE') {
+
+                            //$('<td class="mapaCuadricula" align="center"><div class="cuadricula '+b+'" onclick="marca_check($(this))" >'+checkbox+'</div></td>').appendTo(tr);
+
+                            if (b == 'OCUPADO' || b == 'RESERVADO') {
+
+                              $('<td class="mapaCuadricula" align="center"><div title-reserva="Cargando.." class="tooltipReserva cuadricula ' + b + '" data-claveUnidad="' + v.claveUnidad + '" data-fecha="' + a +
+                                '" onclick="marca_check($(this))" >' + checkbox + '</div></td>').appendTo(tr);
+
+                            } else {
+
+                              $('<td class="mapaCuadricula" align="center"><div class="cuadricula ' + b + '" onclick="marca_check($(this))" >' + checkbox + '</div></td>').appendTo(tr);
+
+                            }
+
+                          }
+
+                          if (v.tipo_cobro == 'HORA') {
+
+                            $('<td class="mapaCuadricula" align="center"><div class="cuadricula HORA" >' + b + '</div></td>').appendTo(tr);
+
+                          }
+
+
+
+                          //$('<td class="" align="center"><div class=" '+b+'" onclick="" >'+checkbox+'</div></td>').appendTo(tr);
+
+                        });
+
+                        tr.appendTo('#mapa tbody');
+
+                      });
+
+
+
+                      fechaAnterior = data.fechaAnterior
+
+                      fechaSiguiente = data.fechaSiguiente
+
+                      setTimeout('unloading()', 3000);
+
+                      //Mostrar el mapa y algunos controles
+
+                      $('#formMapaDisponibilidad').show();
+
+                      $('#btnAceptarContinuar').show();
+
+                      $('#mes').html(data.mes);
+
+                      sortTable();
+
+                    },
+
+                    error: function() {
+
+                      showError('Error en Ejecución', 5000);
+
+                      setTimeout('unloading()', 3000);
+
+                    },
+
+                    cache: false,
+
+                    type: "POST",
+
+                    dataType: 'json'
+
+                  });
+
+                }
+
+
+
+                function sortTable() {
+
+                  var tbl = document.getElementById("mapa").tBodies[0];
+
+                  var store = [];
+
+                  for (var i = 0, len = tbl.rows.length; i < len; i++) {
+
+                    var row = tbl.rows[i];
+
+                    var sortnr = parseFloat(row.cells[0].textContent || row.cells[0].innerText);
+
+                    if (!isNaN(sortnr)) store.push([sortnr, row]);
+
+                  }
+
+                  store.sort(function(x, y) {
+
+                    return x[0] - y[0];
+
+                  });
+
+                  for (var i = 0, len = store.length; i < len; i++) {
+
+                    tbl.appendChild(store[i][1]);
+
+                  }
+
+                  store = null;
+
+                };
+
+
+
+                function filtraCapacidad(valor) {
+
+                  if (valor != 'TODAS') {
+
+                    $(".trCap").hide();
+
+                    $(".cap_" + valor).show();
+
+                  } else {
+
+                    $(".trCap").show();
+
+                  }
+
+                }
+
+
+
+                function verDisponibilidad() {
+
+                  reloadMapa($('#mapa'), $('#fechaEntrada').val());
+
+                  sortTable();
+
+                }
+
+
+
+                $(document).ready(function() {
+
+                  reloadMapa($('#mapa'));
+
+                  sortTable();
+
+                });
+              </script>
+
+
+
+
+
+              <table width="100%">
+
+                <tr>
+
+                  <td align="left"><label for="capacidad">Capacidad</label>
+
+                    <select id="capacidad" name="capacidad" onchange="filtraCapacidad($(this).val())">
+
+                                                                                                <option value="TODAS">Todas</option>
+
+                                                                                                <option value="1">Sencilla</option>
+
+                                                                                                <option value="2">Doble</option>
+
+                                                                                                <option value="3">Triple</option>
+
+                                                                                                <option value="4">Cuadruple</option>
+
+                                                                                </select>
+
+                  </td>
+
+                  <td align="center">
+
+                    <label style="width:15%" for="fecha_entrada">Fecha Entrada</label> <input class="small datepickerAct" type="text" value="" name="fechaEntrada" id="fechaEntrada" /> <input type="button" class="uibutton" value=" Ver" onclick="verDisponibilidad()"
+                    />
+
+                  </td>
+
+                  <td align="right" colspan="3" height="50px">
+
+                    <a class="uibutton" href="/index.php/panel/reservaciones/nueva">Nueva Reservación</a> </td>
+
+                </tr>
+
+                <tr>
+
+                  <td align="left">
+
+                    <input id="anterior" type="button" onclick="reloadMapa($('#mapa'),fechaAnterior);" value=" << Anterior " class="uibutton confirm large" />
+
+                  </td>
+
+                  <td align="center">
+                    <h3 class="unline" id="mes"></h3></td>
+
+                  <td align="right">
+
+                    <input id="siguiente" type="button" onclick="reloadMapa($('#mapa'),fechaSiguiente);" value=" Siguiente >> " class="uibutton confirm large" />
+
+                  </td>
+
+                </tr>
+
+                <tr>
+
+                  <td align="center" colspan="3">
+
+                    <form id="formMapaDisponibilidad" style="display:block">
+
+                      <!--h4 class="unline">Mapa de disponibilidad</h4-->
+
+                      <table id="mapa" class="mapa" class="display" width="100%">
+
+                        <thead>
+                          <!--Contenido Dinámico-->
+                        </thead>
+
+                        <tbody>
+                          <!--Contenido Dinámico-->
+                        </tbody>
+
+                      </table>
+
+                    </form>
+
+                  </td>
+
+                </tr>
+
+              </table>
+
+
+
+
+
+            </div>
+
+          </div>
+
+          <!--
+
+</div>
+
+
+
+<div class="oneThree">
+
+                <div class="widget">
+
+                <div class="header"><span><span class="ico gray window"></span></span></div>
+
+                                <div class="content">
+
+                                                                                                <div class="portlet-content">
+
+                                                <div class="pizarra">
+
+                                                    <span class="dia">                                                                                                                                                      <br>
+
+                                                                </span>
+
+                                                    <span class="mes"></span>
+
+                                                    <span class="anio"></span>
+
+                                                    <span class="hora"></span>
+
+                                                    <span class="minuto"></span>
+
+                                                    <span class="dia"></span>
+
+                                                    <span class="mes"></span>
+
+                                                    <span class="anio"></span>
+
+                                                    <span class="hora"></span>
+
+                                                    <span class="minuto"></span>
+
+                                                    <span class="disponible">DISPONIBLE:</span>
+
+                                                    <span class="img disp "></span>
+
+                                                    <img src="/images/pizarra.png">
+
+                                                </div>
+
+                                                <br>
+
+                                                <table>
+
+                                                                <tbody>
+
+                                                                <tr>
+
+                                                                                <td class="cuadricula habitacion"><div class="habitacion reservado">&nbsp;</div></td>
+
+                                                                                <td><h4><img src="/images/yell-tag.png" /> &nbsp; Habitacion Reservada </h4></td>
+
+                                                                </tr>
+
+                                                                <tr>
+
+                                                                                <td class="cuadricula habitacion"><div class="habitacion ocupado">&nbsp;</div></td>
+
+                                                                                <td><h4><img src="/images/red-tag.png" /> &nbsp; Habitacion Ocupada </h4></td>
+
+                                                                </tr>
+
+                                                                </tbody>
+
+                                                </table>
+
+                                    </div>
+
+                                                </div>
+
+                </div>
+
+</div>
+
+-->
+
+
+
+          <div class="clear"></div>
+
+        </div>
+
+
+
+        <div class="widget">
+
+          <div class="header"><span><span class="ico  gray window"></span>Huéspedes en casa</span>
+          </div>
+
+          <div class="content">
+
+
+
+            <form>
+
+              <div class="tableName" style="margin-top:30px">
+
+
+
+                <table class="display data_table3" id="data_table3">
+
+                  <thead>
+
+                    <tr>
+
+                      <th>Folio de Reservaci&oacute;n</th>
+
+                      <th>N&uacute;mero de habitaci&oacute;n</th>
+
+                      <th>Nombre</th>
+
+                      <th>Fecha Entrada</th>
+
+                      <th>Fecha Salida</th>
+
+                      <th>Opciones</th>
+
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+
+
+
+
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            </form>
+
+
+
+            <!-- clear fix -->
+
+            <div class="clear"></div>
+
+
+
+          </div>
+          <!-- End content -->
+
+        </div>
+        <!-- End full width -->
+      </div>
+      <!-- content -->
+
+      <div class="clear"></div>
+
+    </div>
+    <!--// End inner -->
+
+  </div>
+  <!--// End content -->
+
+  <div id="footer">
+
+    <!--<div class="container">-->
+
+    <div class="info">
+
+      <span style="color:#4782c5">HOTEL</span>
+
+      <span style="padding-right:2%"> ONEPLACE</span> /
+
+      <a style="padding:0 2% 0 2%" href="http://www.logismic.mx/" target="_blank" class="web">www.logismic.mx</a>
+
+      <span>Logismic S de RL de CV. Todos los derechos reservados 2017.</span> <span>Tel. / Fax: [999]926 26 96</span>
+
+    </div>
+
+    <div class="clear"></div>
+
+    <!--</div>-->
+
+  </div>
+
+
+
+</body>
+
+</html>

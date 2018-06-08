@@ -44,33 +44,8 @@
 
     </head>
   <body>
-<!-- Connect - DB -->
-<!-- ****************************** -->
-<div id="table-div">
-  <table id="datatable" class="display" style="width:100%">
-          <thead>
-              <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Password</th>
-                  <th>Level</th>
-              </tr>
-          </thead>
-          <tfoot>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Level</th>
-            </tr>
-          </tfoot>
-      </table>
-</div>
-<!-- ****************************** -->
-<!-- Connect - DB -->
-
+      
+     
 <!-- Nav -->
   <nav>
     <div class="nav-wrapper brown darken-3">

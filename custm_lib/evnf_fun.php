@@ -1,5 +1,28 @@
 <?php
 class CrmCasonaFuns{
+/*
+*Start a connection
+*/
+  public static function startConnectionDb(){
+    $db = new MysqliDb (Array (
+        'host' => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'db'=> 'db_crm_casona',
+        'port' => 3306,
+        'prefix' => '',
+        'charset' => 'utf8'));
+    $db->autoReconnect = false;
+
+    if ($db->getLastErrno() === 0){
+        return $db;
+    }else{
+      echo 'Failed. Error: '. $db->getLastError();  
+    }
+    return $db;   
+  }
+    
+    
   public function setConnectionDB(){
   $db = new MysqliDb (Array (
         'host' => 'localhost',

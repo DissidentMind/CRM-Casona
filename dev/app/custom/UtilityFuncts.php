@@ -1,8 +1,9 @@
 <?php
 class UtilityFuncts{
+    
     /**
      * Validate Url, if string or stringarray launch createFileFromUrlExec
-     * @param {string} url Url to get file
+     * @param {string} url Url to get file Format C:\\xxx\\
      * @param {string} path Destination Path to new files
      * @author {evanfa}
      * @return {boolean} Available to create file flag
@@ -11,7 +12,7 @@ class UtilityFuncts{
     public function createFileFromUrl($url,$targetPath){
         //Determine the DataType (String or Array)
         if(gettype($url) == 'string'){
-        self::createFileFromUrlExec($url,$targetPath);
+            self::createFileFromUrlExec($url,$targetPath);
         }elseif(gettype($url) == "array"){
             $arrlength = count($url);
         for($x = 0; $x < $arrlength; $x++) {

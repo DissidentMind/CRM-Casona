@@ -46,5 +46,15 @@ class UtilityFuncts{
               echo"Write Error";
             }
       }
+    /**
+     * From url download (copy) the refered picture
+     * @param {string} $url        Picture Url
+     * @param [[Type]] $targetPath Destination Path
+     */
+    public function generateImgFromUrl($url,$targetPath){
+        $image = file_get_contents($url);
+        file_put_contents($targetPath, $image); 
+    }
+    
 }
 ?>

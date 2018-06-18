@@ -22,7 +22,6 @@ require_once ('../php_lib/MysqliDb.php');
 
 //$db_conct = CrmCasonaFuns::startConnectionDb();
 
-
 //$db_conct->rawQuery('SELECT * from users_crm where level_usr=1', Array (10));
 
 

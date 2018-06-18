@@ -16,22 +16,20 @@
   <div class="row">
     <div class="col l6 s12">
     <?php
-    if(isset($_GET['id']) && $_GET['id'] !== ''){
-      $product_id = $_GET['id'];
-      echo $product_id;
+    //if(isset($_GET['id']) && $_GET['id'] !== ''){
+     // $product_id = $_GET['id'];
+      //echo $product_id;
 
       require_once('custm_lib/evnf_fun.php');
-
       $arryCols = Array("id","name_usr","email_usr","level_usr");
       $tableName = 'users_crm';
       $crmFunCall = new CrmCasonaFuns();
       //$crmFunCall ->getsTableRecords($arryCols, $tableName);
       $crmFunCall ->getsTotalRecords($arryCols, $tableName);
     //  echo $crmFunCall;
-
-    } else {
-      echo "failed";
-    }
+    //} else {
+    //  echo "failed";
+    //}
   /*<a href="pages.php?id=<?php echo $product_id; ?>"> */
      ?>
    </div>

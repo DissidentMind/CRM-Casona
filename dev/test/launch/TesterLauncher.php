@@ -37,6 +37,19 @@
                   }
                 }); // end ajax call
             });
+            
+             $('#followbtn').on('click', function(e){
+                
+                 $.ajax({
+                     url: 'app/template/Emailer.php',
+                     type: 'post',
+                     data:{},
+                     success: function(data){
+                         console.log("SucessX");
+                     }
+                 });
+                 
+             });                           
         });
   </script>
         
@@ -51,8 +64,6 @@
     echo(__DIR__);
     echo("<br>".$rootpath);
     
-   /* $rootpath = $_SERVER['DOCUMENT_ROOT'];
-    include($rootpath."/CRM-Casona/dev/app/custom/UtilityFuncts.php");*/
     /*$rootpath = $_SERVER['DOCUMENT_ROOT'];
     include($rootpath."/CRM-Casona/dev/app/template/DisplayTemplate.php");*/
     
@@ -67,6 +78,9 @@
     $appUtils = new UtilityFuncts();
     $appUtils->createFileFromUrl($cars,"C:\\Users\\evanf\\Documents\\roottest\\");
     */
+    //$rootpath = $_SERVER['DOCUMENT_ROOT'];
+    //include($rootpath."/CRM-Casona/dev/app/custom/UtilityFuncts.php");
+    
    ?>
     
     <div id="container">
@@ -77,7 +91,7 @@
         <input type="button" id="followbtn" class="uibutton" value="Follow"/>
         </p>
         <div id="followercnt">
-        
+            
         </div>
     </div>
 </body>

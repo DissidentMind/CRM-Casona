@@ -41,7 +41,7 @@ class CrmCasonaFuns{
   }
 
   public function getsTotalRecords($arryCols, $tableName){
-    require_once ('php_lib/MysqliDb.php');
+    //require_once ('php_lib/MysqliDb.php');
     require_once('custm_lib/evnf_connect.php');
 
     if ($db->getLastErrno() === 0)

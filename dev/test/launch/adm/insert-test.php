@@ -56,17 +56,24 @@ if (empty($_GET['n']))
         
         $tableName = 'selections_wc';
         
-        $data = Array($_POST['n'],$_POST['match_n'],$_POST['score_l'],$_POST['score_v']);
-        
+       // $data = Array($_POST['n'],$_POST['match_n'],$_POST['score_l'],$_POST['score_v']);
+        $data = Array ("n" => $_GET['n'],
+               "match_n" => $_GET['match_n'],
+               "score_l" => $_GET['score_l'],
+                "score_v" => $_GET['score_v']
+                    );
         //---------------------------
-            $id = $db_conct->insert ($tableName, $data);
-                if($id)
-            echo 'user was created. Id=' . $id;
+    $id = $db_conct->insert($tableName, $data);
+
+            if($id){
+                echo 'user was created. Id=' . $id;   
+            }
+        $db_conct->disconnect();
         //--------------------------    
         // show a message of success and provide a true success variable
-        $data['success'] = true;
-        $data['message'] = 'Success!';
+        //$data['success'] = true;
+        //$data['message'] = 'Success!';
     }
     // return all our data to an AJAX call
-    echo json_encode($data);
+    //echo json_encode($data);
 ?>

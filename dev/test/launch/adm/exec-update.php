@@ -45,16 +45,21 @@ $data           = array();      // array to pass back data
         
         $tableName = 'selections_wc';
         
-        $data = Array($_POST['n'],$_POST['match_n'],$_POST['score_l'],$_POST['score_v']);
-        
+$data = Array ("n" => $_POST['n'],
+               "match_n" => $_POST['match_n'],
+               "score_l" => $_POST['score_l'],
+                "score_v" => $_POST['score_v']
+                );        
         //---------------------------
-            $id = $db_conct->insert ($tableName, $data);
-                if($id)
-            //echo 'user was created. Id=' . $id;
+            $id = $db_conct->insert($tableName, $data);
+            if($id){
+                //echo 'user was created. Id=' . $id;
+                $data['success'] = true;
+                $data['message'] = 'Success!';
+            }
+        $db_conct->disconnect();
         //--------------------------    
         // show a message of success and provide a true success variable
-        $data['success'] = true;
-        $data['message'] = 'Success!';
     }
     // return all our data to an AJAX call
     echo json_encode($data);

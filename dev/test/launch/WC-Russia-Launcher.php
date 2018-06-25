@@ -26,7 +26,6 @@
         
     @media print {
        /* Todas las reglas Css */
-        
     }
         
     h3{  
@@ -41,26 +40,30 @@
         /*margin-bottom: 13px;
         line-height: 35px;*/
         }
-        
-    table {
+    table{
             border-collapse: collapse;
         }
-        table, th, td {
+    table, th, td {
             border: 1px solid #ccc;
         }
-        .txt-bld{
-            font-family: sans-serif;
-            font-size: 15px;
-            font-weight: bold;
-            color: #373d47;
+    .ply_font{
+        font-family:"Myriad Pro", Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-size: bold;
         }
-        .ply-font{
-            font-family: sans-serif;
-            font-size: 13px;
-            font-weight: bold;
-            color: #373d47;
+    #stadistic_table{
+            /*margin-left: 20%;*/
+            /*width: 30%;*/
+            /*height: auto;*/
+            margin-left:inherit;
         }
-        
+    #matches_table{
+            position: relative;
+            /*top: 0px;
+            bottom: 0px;
+            left: 0px;*/
+            /*width: 70%;*/
+        }
     
     </style>
 </head>
@@ -181,7 +184,7 @@ function displayPlayersScoreCard(){
         foreach ($players as $play) {                 
             echo("<tr>
                     <td align='center' class='ply-font'>".$pos."</td>
-                    <td class='ply-font'>".$play['name_player']."</td>
+                    <td class='ply_font'>".$play['name_player']."</td>
                     <td align='center'>".$play['points_player']."</td>
                     <td align='center'>".$play['goals_player']."</td>
                     </tr>");
@@ -193,11 +196,9 @@ function displayPlayersScoreCard(){
         }
     }      
 ?>                
-</div>        
-
-
+</div>
 <div class="row">
-      <div class="col s7">
+      <div class="col s7" id="matches_table">
           <table>
             <tbody>
                 <tr>
@@ -207,7 +208,7 @@ function displayPlayersScoreCard(){
                 </tr>          
             </tbody>
         </table></div>
-      <div class="col s5">
+      <div class="col s5" id="stadistic_table">
           <table>
               <tbody>
                 <tr>

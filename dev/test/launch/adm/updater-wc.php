@@ -65,7 +65,7 @@
         }
     </style>
     <script>
-        $(document).ready(function() {
+    $(document).ready(function() {
 
             var matchData = new Array();
             var goals_l = new Array();
@@ -74,58 +74,66 @@
         $("#submitForm").click(function(event) {
             var x = $("#formf").serializeArray();
             
-            //var namesP = "";
+            //
             //************************
+ var saveLocal = false;
+            var namesP;
+            var match_n;
+            var goles_l;
+            var goles_v;
             
-        $.each(x, function(i, field) {
-            
-            var goles_l = 0;
-            var goles_v = 0;
-            
+  $.each(x, function(i, field) {
+                    //console.log("N: "+field.name);
+                    //console.log("V: "+field.value);
+
             if (field.value != "") {
-                if(field.name=="names"){
+
+                if(field.name == "names"){
                     namesP = field.value;
-                    //id player
-                    console.log("Name: "+namesP);
-                }else{
+                    //console.log("ID: "+namesP);
+                     }
+
+                if(field.name.substr(0, field.name.indexOf('_'))){
+                        match_n = field.name.substr(0, field.name.indexOf('_'));
+                         //console.log("Match ID: "+match_n);
+                    }
+
                     if (field.name.match(/[l]/i)) {
                         goles_l = field.value;
-                        console.log("L:"+field.name);
-                        console.log("LV:"+field.value);
-                    } else {
+                         //console.log("Local: "+goles_l);
+                    }
+
+                    if(field.name.match(/[v]/i)) {
                         goles_v = field.value;
-                        console.log("V:"+field.name);
-                        console.log("VV:"+field.value);
+                         //console.log("Visita: "+goles_v);
                     }
+//***********************************************************
+if(saveLocal == false){
+    if(namesP && match_n && goles_l){
+                    console.log("Id: "+namesP);
+                    console.log("Match: "+match_n);
+                    console.log("Goles L: "+goles_l);
+                    saveLocal = true;
                 }
-                // Submit the form using AJAX.
-                //****************************
-                var formData = {
-                    'n': namesP,
-                    'match_n': field.name.substr(0, field.name.indexOf('_')),
-                    'score_l': goles_l,
-                    'score_v': goles_v
-                };
-                
-               $.ajax({
-                    type: 'POST',
-                    url: 'exec-update.php',
-                    data: formData, // our data object
-                    dataType: 'json', // what type of data do we expect back from the server
-                    encode: true,
-                    success:function(data){
-                        alert(">>: "+data);
-                       // $ ("$sub").HTML(data);
-                        //$('sub').eq(0).html(data);
-                        //$('sub').html(data);
-                    }
-                });
-                //**************************** 
+}else{
+    if(namesP && match_n && goles_l && goles_v){
+                    console.log("Id: "+namesP);
+                    console.log("Match: "+match_n);
+                    console.log("Goles V: "+goles_v);
+                    saveLocal = false;
                 }
-            });
+            }
+//***********************************************************
+    }//Empty IF
+});
     event.preventDefault();
             });
         });
+        
+function storeValuesForm(var playerID, var matchNum, var golesScore){
+    
+}        
+
     </script>
 </head>
 

@@ -1,8 +1,7 @@
 <?php
 // process.php
-
-$errors         = array();      // array to hold validation errors
-$data           = array();      // array to pass back data
+$errors = array();   // array to hold validation errors
+$data = array();   // array to pass back data
 
 // validate the variables ======================================================
     // if any of these variables don't exist, add an error to our $errors array
@@ -45,7 +44,7 @@ $data           = array();      // array to pass back data
         
         $tableName = 'selections_wc';
         
-$data = Array ("n" => $_POST['n'],
+        $data = Array ("n" => $_POST['n'],
                "match_n" => $_POST['match_n'],
                "score_l" => $_POST['score_l'],
                 "score_v" => $_POST['score_v']

@@ -164,7 +164,7 @@ $(document).ready(function() {
 </head>
 <body>
 
-        <?php       
+<?php       
 function connectStart(){
     $rootpath = $_SERVER['DOCUMENT_ROOT'];
     require_once($rootpath."/CRM-Casona/php_lib/MysqliDb.php");
@@ -293,7 +293,6 @@ if(is_null($user['score_l']) || is_null($user['score_v'])){
                 </tbody>
             </table>
         </form>
-            <button id="submitForm" name="submitForm">Done</button>
         </div>
     </div>
     <div class="row">

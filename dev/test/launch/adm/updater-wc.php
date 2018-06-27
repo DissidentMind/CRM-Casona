@@ -64,77 +64,103 @@
             text-align: center;
         }
     </style>
-    <script>
-    $(document).ready(function() {
+<script>
+    var idPlayer;
+    var match_n;
+    var goles_l;
+    var goles_v;
+    var paramsCount = 0;
 
-            var matchData = new Array();
-            var goals_l = new Array();
-            var goals_v = new Array();
+function setIDPlayer(idPlay){
+    this.idPlayer = idPlay;
+}
 
-        $("#submitForm").click(function(event) {
-            var x = $("#formf").serializeArray();
-            
-            //
-            //************************
- var saveLocal = false;
-            var namesP;
-            var match_n;
-            var goles_l;
-            var goles_v;
-            
-  $.each(x, function(i, field) {
-                    //console.log("N: "+field.name);
-                    //console.log("V: "+field.value);
+function getIDPlayer(){
+    return this.idPlayer;
+}
 
-            if (field.value != "") {
+function setMatchN(idMatch){
+    this.match_n = idMatch;
+}
 
-                if(field.name == "names"){
-                    namesP = field.value;
-                    //console.log("ID: "+namesP);
-                     }
+function getMatchN(){
+    return this.match_n;
+}
 
-                if(field.name.substr(0, field.name.indexOf('_'))){
-                        match_n = field.name.substr(0, field.name.indexOf('_'));
-                         //console.log("Match ID: "+match_n);
-                    }
+function setGoalsL(idGoalsL){
+    this.goles_l = idGoalsL;
+}
 
-                    if (field.name.match(/[l]/i)) {
-                        goles_l = field.value;
-                         //console.log("Local: "+goles_l);
-                    }
+function getGoalsL(){
+    return this.goles_l;
+}
 
-                    if(field.name.match(/[v]/i)) {
-                        goles_v = field.value;
-                         //console.log("Visita: "+goles_v);
-                    }
-//***********************************************************
-if(saveLocal == false){
-    if(namesP && match_n && goles_l){
-                    console.log("Id: "+namesP);
-                    console.log("Match: "+match_n);
-                    console.log("Goles L: "+goles_l);
-                    saveLocal = true;
-                }
-}else{
-    if(namesP && match_n && goles_l && goles_v){
-                    console.log("Id: "+namesP);
-                    console.log("Match: "+match_n);
-                    console.log("Goles V: "+goles_v);
-                    saveLocal = false;
-                }
-            }
-//***********************************************************
-    }//Empty IF
-});
-    event.preventDefault();
-            });
-        });
-        
-function storeValuesForm(var playerID, var matchNum, var golesScore){
+function setGoalsV(idGoalsV){
+    this.goles_v = idGoalsV;
+}
+
+function getGoalsV(){
+    return this.goles_v;
+}
     
-}        
+function storeData(nPlayer,idMatch,goalsL,goalsV){
+    $.ajax({
+		type: 'POST',
+		url: 'exec-update.php',
+		data: {
+        'n': nPlayer,
+        'match_n': idMatch,
+        'score_l': goalsL,
+        'score_v': goalsV
+        }, 
+		dataType: 'json',
+		encode: true,
+		success:function(data){
+			alert(JSON.stringify(data));
+		  }
+	   });   
+}
+    
+    
+$(document).ready(function() {
+    $("#submitForm").click(function(event) {
+    var x = $("#formf").serializeArray();
+        $.each(x, function(i, field) {
+        
+        if(field.value != ""){
+            
+            if(field.name == "names"){
+                    setIDPlayer(field.value);
+                }//ID PLAYER
 
-    </script>
+            if (field.name.match(/[l]/i)) {
+                    setMatchN(field.name.substr(0, field.name.indexOf('_')));
+                    setGoalsL(field.value);
+                }//IF LOCAL VAL
+
+            if (field.name.match(/[v]/i)) {
+                    setGoalsV(field.value);
+                }//IF VISIT VAL
+            
+            if(getMatchN() && getGoalsL() && getGoalsV()){
+                
+                console.log("Id: "+idPlayer);
+                console.log("Match: "+match_n);
+                console.log("Goles L: "+goles_l);
+                console.log("Goles V: "+goles_v);
+                
+                storeData(idPlayer,match_n,goles_l,goles_v);
+                
+                setMatchN(null);
+                setGoalsL(null);
+                setGoalsV(null);
+                }
+            } 
+        });
+    });    
+});
+
+</script>
 </head>
 
 <body>
@@ -174,15 +200,20 @@ function displayPlayers(){
      }
 }    
     
-function displayMatches($offset,$count){
+function displayMatches($nPlayer,$offset,$count){
     $db_conct = connectStart();
     $arryCols = Array("team_l","team_v");
+    //$tableName = 'selections_wc';
     $tableName = 'matches_wc';
 
 if ($db_conct->getLastErrno() === 0)
       echo 'Succesfull';
-        $users = $db_conct->withTotalCount()->get($tableName, Array ($offset, $count));
-
+//$users = $db_conct->withTotalCount()->get($tableName, Array ($offset, $count));
+    
+$params = Array($nPlayer, $offset, $count); 
+$q = "SELECT matches_wc.team_l, selections_wc.score_l, selections_wc.score_v, matches_wc.team_v FROM matches_wc, selections_wc WHERE selections_wc.match_n = matches_wc.n and selections_wc.n = ? LIMIT ?, ?";
+$users = $db_conct->rawQuery ($q, $params);
+    
 if($offset == 0 || $offset == 16 || $offset == 32){
      $count = $offset;
      $count += 1;
@@ -203,7 +234,7 @@ if ($db_conct->count > 0){
     foreach ($users as $user) {
       echo("<tr>
               <td><img src=".$url.$user['team_l']." height='32' width='73'/></td>");
-        if(is_null($user['score_l']) || is_null($user['score_v'])){
+if(is_null($user['score_l']) || is_null($user['score_v'])){
             echo("<td align='center' class='txt-bld'>
                 <input type='text' size='4' name='".$count."_l'>            </td>
               <td align='center' class='txt-bld'><input type='text' size='4' name='".$count."_v'></td>");
@@ -220,14 +251,19 @@ if ($db_conct->count > 0){
           }
           echo('</tbody>
           </table>
-          
           ');
       }else{
       echo 'Failed. Error: -> '. $db_conct->getLastError() . '</br>';
         }
     }
 ?>
-    </div>
+</div>
+    <?php
+    if(isset($_GET['ply'])){
+            $n = $_GET['ply'];
+    }
+        ?>
+    
     <div class="row">
         <div class="col s7" id="matches_table">
             <form id="formf" action="">
@@ -235,29 +271,26 @@ if ($db_conct->count > 0){
                     <tbody>
                         <tr>
                             <td>
-                                <select name="names">
+                            <select name="names">
                                 <?php displayPlayers(); ?>
                             </select>
                             </td>
                         </tr>
-                    
                         <tr>
                             <td>
-                                <?php displayMatches(0,16); ?>
+                                <?php displayMatches($n,0,16); ?>
                             </td>
                             <td>
-                                <?php displayMatches(16,16); ?>
+                                <?php displayMatches($n,16,16); ?>
                             </td>
                             <td>
-                                <?php displayMatches(32,16); ?>
+                                <?php displayMatches($n,32,16); ?>
                             </td>
                         </tr>
                     
                 </tbody>
             </table>
         </form>
-                <!-- <input type="submit" id="submitForm" name="submitForm" value="Submit">-->
-            
             <button id="submitForm" name="submitForm">Done</button>
         </div>
     </div>
@@ -268,5 +301,4 @@ if ($db_conct->count > 0){
     <spawn id="sub" name="sub">
     </spawn>
 </body>
-
 </html>

@@ -5,8 +5,6 @@ $data = array();   // array to pass back data
 
 // validate the variables ======================================================
     // if any of these variables don't exist, add an error to our $errors array
-    if (empty($_POST['n']))
-        $errors['n'] = 'ID Required';
 
     if (empty($_POST['match_n']))
         $errors['match_n'] = 'Match ID Required';
@@ -15,7 +13,8 @@ $data = array();   // array to pass back data
         $errors['score_l'] = 'Score Local Required';
 
     if (empty($_POST['score_v']))
-        $errors['score_v'] = 'Score Visita Required';*/
+        $errors['score_v'] = 'Score Visita Required';
+        */
 
 // return a response ===========================================================
     // if there are any errors in our errors array, return a success boolean of false
@@ -40,24 +39,20 @@ $data = array();   // array to pass back data
           'prefix' => '',
           'charset' => 'utf8'));
         
-        $tableName = 'selections_wc';
+        $tableName = 'matches_wc';
         
-        $data = Array ('n' => $_POST['n'],
-               'match_n' => $_POST['match_n'],
+        $data = Array (
                'score_l' => $_POST['score_l'],
                 'score_v' => $_POST['score_v']
-                );  
-        //---------------------------
-    $id = $db_conct->insert($tableName, $data);
-        if($id){
-                //echo 'user was created. Id=' . $id;
+                );
+        
+        $db_conct->where ('n', $_POST['match_n']);
+        if ($db_conct->update ($tableName, $data)){
                 $data['success'] = true;
                 $data['message'] = 'Success!';
-                $db_conct->disconnect();
-            }
-        
-        //--------------------------    
-        // show a message of success and provide a true success variable
+        }else{
+            $data['message'] = 'Update failed: ' . $db_conct->getLastError();
+        }
     }
     // return all our data to an AJAX call
     echo json_encode($data);

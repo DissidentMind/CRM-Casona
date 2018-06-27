@@ -65,19 +65,10 @@
         }
     </style>
 <script>
-    var idPlayer;
     var match_n;
     var goles_l;
     var goles_v;
     var paramsCount = 0;
-
-function setIDPlayer(idPlay){
-    this.idPlayer = idPlay;
-}
-
-function getIDPlayer(){
-    return this.idPlayer;
-}
 
 function setMatchN(idMatch){
     this.match_n = idMatch;
@@ -103,12 +94,11 @@ function getGoalsV(){
     return this.goles_v;
 }
     
-function storeData(nPlayer,idMatch,goalsL,goalsV){
+function storeData(idMatch,goalsL,goalsV){
     $.ajax({
 		type: 'POST',
-		url: 'exec-update.php',
+		url: 'exec-results-updt.php',
 		data: {
-        'n': nPlayer,
         'match_n': idMatch,
         'score_l': goalsL,
         'score_v': goalsV
@@ -117,10 +107,11 @@ function storeData(nPlayer,idMatch,goalsL,goalsV){
 		encode: true,
 		success:function(data){
 			alert(JSON.stringify(data));
+            return false;
+            //window.location.reload(true);
 		  }
 	   });   
 }
-    
     
 $(document).ready(function() {
     $("#submitForm").click(function(event) {
@@ -129,41 +120,37 @@ $(document).ready(function() {
         
         if(field.value != ""){
             
-            if(field.name == "names"){
-                    setIDPlayer(field.value);
-                }//ID PLAYER
+        if (field.name.match(/[l]/i)) {
+                setMatchN(field.name.substr(0, field.name.indexOf('_')));
+                setGoalsL(field.value);
+            }//IF LOCAL VAL
 
-            if (field.name.match(/[l]/i)) {
-                    setMatchN(field.name.substr(0, field.name.indexOf('_')));
-                    setGoalsL(field.value);
-                }//IF LOCAL VAL
+        if (field.name.match(/[v]/i)) {
+                setGoalsV(field.value);
+            }//IF VISIT VAL
 
-            if (field.name.match(/[v]/i)) {
-                    setGoalsV(field.value);
-                }//IF VISIT VAL
-            
-            if(getMatchN() && getGoalsL() && getGoalsV()){
-                
-                console.log("Id: "+idPlayer);
-                console.log("Match: "+match_n);
-                console.log("Goles L: "+goles_l);
-                console.log("Goles V: "+goles_v);
-                
-                storeData(idPlayer,match_n,goles_l,goles_v);
-                
-                setMatchN(null);
-                setGoalsL(null);
-                setGoalsV(null);
+        if(getMatchN() && getGoalsL() && getGoalsV()){
+
+            console.log("Match: "+match_n);
+            console.log("Goles L: "+goles_l);
+            console.log("Goles V: "+goles_v);
+
+            storeData(match_n,goles_l,goles_v);
+
+            setMatchN(null);
+            setGoalsL(null);
+            setGoalsV(null);
                 }
             } 
         });
     });    
 });
-
 </script>
 </head>
-<body>
 
+<body>
+    <h3>World Cup Russia 2018 - FIFA - Resultados al Momento</h3>
+    <div id="container">
         <?php       
 function connectStart(){
     $rootpath = $_SERVER['DOCUMENT_ROOT'];
@@ -196,30 +183,18 @@ function displayPlayers(){
      }else{
           echo 'Failed. Error: -> '. $db_conct->getLastError() . '</br>';
      }
-}
+}    
     
-function getUserName($idUser){    
-    $dbC = connectStart();
-    $par = Array($idUser);
-    
-    $user = $dbC->rawQueryValue ('SELECT name_player FROM contest_wc WHERE n=? limit 1', $par);
-    
-    return $user;
-}
-    
-function displayMatches($nPlayer,$offset,$count){
+function displayMatches($offset,$count){
     $db_conct = connectStart();
     $arryCols = Array("team_l","team_v");
+    
     //$tableName = 'selections_wc';
     $tableName = 'matches_wc';
 
 if ($db_conct->getLastErrno() === 0)
       echo 'Succesfull';
-//$users = $db_conct->withTotalCount()->get($tableName, Array ($offset, $count));
-    
-$params = Array($nPlayer, $offset, $count); 
-$q = "SELECT matches_wc.team_l, selections_wc.score_l, selections_wc.score_v, matches_wc.team_v FROM matches_wc, selections_wc WHERE selections_wc.match_n = matches_wc.n and selections_wc.n = ? LIMIT ?, ?";
-$users = $db_conct->rawQuery ($q, $params);
+$users = $db_conct->withTotalCount()->get($tableName, Array ($offset, $count));
     
 if($offset == 0 || $offset == 16 || $offset == 32){
      $count = $offset;
@@ -238,7 +213,7 @@ if ($db_conct->count > 0){
                 </tr>
               </thead>
               <tbody>");
-    foreach ($users as $user) {
+ foreach ($users as $user) {
       echo("<tr>
               <td><img src=".$url.$user['team_l']." height='32' width='73'/></td>");
 if(is_null($user['score_l']) || is_null($user['score_v'])){
@@ -264,15 +239,7 @@ if(is_null($user['score_l']) || is_null($user['score_v'])){
         }
     }
 ?>
-<?php
-    if(isset($_GET['ply'])){ 
-        $n = $_GET['ply'];
-    echo("<h3>World Cup Russia 2018 - FIFA - PLANILLA DE ");
-    echo(getUserName($n));
-    echo("</h3>");
-         }
-?>
-<div id="container">
+</div>
     <div class="row">
         <div class="col s7" id="matches_table">
             <form id="formf" action="">
@@ -280,16 +247,15 @@ if(is_null($user['score_l']) || is_null($user['score_v'])){
                     <tbody>
                         <tr>
                             <td>
-                                <?php displayMatches($n,0,16); ?>
+                                <?php displayMatches(0,16); ?>
                             </td>
                             <td>
-                                <?php displayMatches($n,16,16); ?>
+                                <?php displayMatches(16,16); ?>
                             </td>
                             <td>
-                                <?php displayMatches($n,32,16); ?>
+                                <?php displayMatches(32,16); ?>
                             </td>
                         </tr>
-                    
                 </tbody>
             </table>
         </form>
@@ -299,7 +265,7 @@ if(is_null($user['score_l']) || is_null($user['score_v'])){
     <div class="row">
         <div id="results" name="results"></div>
     </div>
-</div><!-- Container -->
+    
     <spawn id="sub" name="sub">
     </spawn>
 </body>

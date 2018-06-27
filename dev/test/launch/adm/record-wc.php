@@ -117,6 +117,8 @@ function storeData(nPlayer,idMatch,goalsL,goalsV){
 		encode: true,
 		success:function(data){
 			alert(JSON.stringify(data));
+            return false;
+            //window.location.reload(true);
 		  }
 	   });   
 }
@@ -162,8 +164,10 @@ $(document).ready(function() {
 
 </script>
 </head>
-<body>
 
+<body>
+    <h3>World Cup Russia 2018 - FIFA - Update Players Choises</h3>
+    <div id="container">
         <?php       
 function connectStart(){
     $rootpath = $_SERVER['DOCUMENT_ROOT'];
@@ -196,30 +200,18 @@ function displayPlayers(){
      }else{
           echo 'Failed. Error: -> '. $db_conct->getLastError() . '</br>';
      }
-}
+}    
     
-function getUserName($idUser){    
-    $dbC = connectStart();
-    $par = Array($idUser);
-    
-    $user = $dbC->rawQueryValue ('SELECT name_player FROM contest_wc WHERE n=? limit 1', $par);
-    
-    return $user;
-}
-    
-function displayMatches($nPlayer,$offset,$count){
+function displayMatches($offset,$count){
     $db_conct = connectStart();
     $arryCols = Array("team_l","team_v");
+    
     //$tableName = 'selections_wc';
     $tableName = 'matches_wc';
 
 if ($db_conct->getLastErrno() === 0)
       echo 'Succesfull';
-//$users = $db_conct->withTotalCount()->get($tableName, Array ($offset, $count));
-    
-$params = Array($nPlayer, $offset, $count); 
-$q = "SELECT matches_wc.team_l, selections_wc.score_l, selections_wc.score_v, matches_wc.team_v FROM matches_wc, selections_wc WHERE selections_wc.match_n = matches_wc.n and selections_wc.n = ? LIMIT ?, ?";
-$users = $db_conct->rawQuery ($q, $params);
+$users = $db_conct->withTotalCount()->get($tableName, Array ($offset, $count));
     
 if($offset == 0 || $offset == 16 || $offset == 32){
      $count = $offset;
@@ -241,16 +233,10 @@ if ($db_conct->count > 0){
     foreach ($users as $user) {
       echo("<tr>
               <td><img src=".$url.$user['team_l']." height='32' width='73'/></td>");
-if(is_null($user['score_l']) || is_null($user['score_v'])){
             echo("<td align='center' class='txt-bld'>
                 <input type='text' size='4' name='".$count."_l'>            </td>
               <td align='center' class='txt-bld'><input type='text' size='4' name='".$count."_v'></td>");
             $count += 1;
-        }else{
-            echo(" <td align='center' class='txt-bld'>".$user['score_l']."</td>
-              <td align='center' class='txt-bld'>".$user['score_v']."</td>");
-            $count += 1;
-            }       
         echo("<td>
               <img src=".$url.$user['team_v']." height='32' width='73'/>
               </td>
@@ -264,15 +250,7 @@ if(is_null($user['score_l']) || is_null($user['score_v'])){
         }
     }
 ?>
-<?php
-    if(isset($_GET['ply'])){ 
-        $n = $_GET['ply'];
-    echo("<h3>World Cup Russia 2018 - FIFA - PLANILLA DE ");
-    echo(getUserName($n));
-    echo("</h3>");
-         }
-?>
-<div id="container">
+</div>
     <div class="row">
         <div class="col s7" id="matches_table">
             <form id="formf" action="">
@@ -280,16 +258,22 @@ if(is_null($user['score_l']) || is_null($user['score_v'])){
                     <tbody>
                         <tr>
                             <td>
-                                <?php displayMatches($n,0,16); ?>
-                            </td>
-                            <td>
-                                <?php displayMatches($n,16,16); ?>
-                            </td>
-                            <td>
-                                <?php displayMatches($n,32,16); ?>
+                            <select name="names">
+                                <?php displayPlayers(); ?>
+                            </select>
                             </td>
                         </tr>
-                    
+                        <tr>
+                            <td>
+                                <?php displayMatches(0,16); ?>
+                            </td>
+                            <td>
+                                <?php displayMatches(16,16); ?>
+                            </td>
+                            <td>
+                                <?php displayMatches(32,16); ?>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
         </form>
@@ -299,7 +283,7 @@ if(is_null($user['score_l']) || is_null($user['score_v'])){
     <div class="row">
         <div id="results" name="results"></div>
     </div>
-</div><!-- Container -->
+    
     <spawn id="sub" name="sub">
     </spawn>
 </body>

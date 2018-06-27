@@ -159,17 +159,11 @@ function displayPlayersScoreCard(){
     }
     
     $tablePlay = 'contest_wc';
-    $cols = Array("name_player","points_player","goals_player");
+    $cols = Array("n","name_player","points_player","goals_player");
     
-   // echo($db_con);
-    //echo($db_con->count);
-   /* if ($db_con->getLastErrno() === 0){
-       echo 'Succesfull'; 
-    }*/
     $players = $db_con->get($tablePlay, null, $cols);
     
     if ($db_con->count > 0){
-        //echo $players;
         $pos = 1;
           echo("<table class='striped'>
               <thead>
@@ -184,7 +178,9 @@ function displayPlayersScoreCard(){
         foreach ($players as $play) {                 
             echo("<tr>
                     <td align='center' class='ply-font'>".$pos."</td>
-                    <td class='ply_font'>".$play['name_player']."</td>
+    <td class='ply_font'>
+		<a href='planilla.php?ply=".$play['n']."' target= '_blank'>".$play['name_player'].
+		"</a></td>
                     <td align='center'>".$play['points_player']."</td>
                     <td align='center'>".$play['goals_player']."</td>
                     </tr>");

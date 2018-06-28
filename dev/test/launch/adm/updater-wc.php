@@ -63,6 +63,10 @@
         input {
             text-align: center;
         }
+        
+        td-ok {background-color: forestgreen; 
+            border: 1px solid black;}
+        
     </style>
 <script>
     var idPlayer;
@@ -123,6 +127,7 @@ function storeData(nPlayer,idMatch,goalsL,goalsV){
     
     
 $(document).ready(function() {
+    
     $("#submitForm").click(function(event) {
     var x = $("#formf").serializeArray();
         $.each(x, function(i, field) {

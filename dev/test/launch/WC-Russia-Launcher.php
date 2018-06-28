@@ -64,7 +64,18 @@
             left: 0px;*/
             /*width: 70%;*/
         }
-    
+        .h7{
+            font-family:"Myriad Pro", Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            font-size: bold;
+            color:darkred;
+        }
+        .upSz{
+            font-family:"Myriad Pro", Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-size: bold;
+            color: #7c7268;
+        }
     </style>
 </head>
 <body>
@@ -190,7 +201,25 @@ function displayPlayersScoreCard(){
                 </table>");
             //if ($db_conct->count > 0)
         }
-    }      
+    }
+
+function displayScoredGoals(){
+   
+    try{
+        $db_con = connectStart();
+    }catch(Exception $e){
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
+    
+    //$tablePlay = 'contest_wc';
+    $tablePlay = 'matches_wc';
+    
+    $count = $db_con->getValue ($tablePlay, "sum(score_l) + sum(score_v)");
+    
+    $db_con->disconnect();
+    
+    return $count;
+    }  
 ?>                
 </div>
 <div class="row">
@@ -209,7 +238,14 @@ function displayPlayersScoreCard(){
               <tbody>
                 <tr>
                     <td><?php displayPlayersScoreCard(); ?></td>
-                </tr> 
+                </tr>
+                  <tr>
+                    <td align='center'>
+                    <b class="upSz">Total de Goles Anotados</b></td>
+                  </tr>
+                  <tr>
+                    <td align='center'><span class="h7"><?php echo(displayScoredGoals()); ?></span></td>
+                </tr>
               </tbody>
           </table>
     </div>

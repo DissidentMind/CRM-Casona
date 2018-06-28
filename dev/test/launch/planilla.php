@@ -280,13 +280,13 @@ if(is_null($user['score_l']) || is_null($user['score_v'])){
                     <tbody>
                         <tr>
                             <td>
-                                <?php displayMatches($n,0,16); ?>
+                            <?php displayMatches($n,0,16); ?>
                             </td>
                             <td>
-                                <?php displayMatches($n,16,16); ?>
+                            <?php displayMatches($n,16,16); ?>
                             </td>
                             <td>
-                                <?php displayMatches($n,32,16); ?>
+                            <?php displayMatches($n,32,16); ?>
                             </td>
                         </tr>
                     
